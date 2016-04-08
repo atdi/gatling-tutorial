@@ -1,26 +1,26 @@
-Start rest server:
+##Start rest server##
 
-On linux/unix:
+###On linux/unix###
 
 ./gradlew bootRun
 
-On windows:
+###On windows###
 
 gradlew.bat bootRun
 
-Add data:
+##Add data##
 
-On linux/unix:
+###On linux/unix###
 
 ./gradlew :load-test:gatling-com.github.atdi.load.UserServiceCreateSimulation
 
-On windows:
+###On windows###
 
 gradlew.bat :load-test:gatling-com.github.atdi.load.UserServiceCreateSimulation
 
-Run tests:
+##Run tests##
 
-On linux/unix:
+###On linux/unix###
 
 ./gradlew :load-test:gatling-com.github.atdi.load.UserServiceSimpleSimulation
 
