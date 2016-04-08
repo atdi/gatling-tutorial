@@ -1,0 +1,21 @@
+plugins {
+    id "com.github.lkishalmi.gatling" version "0.2.0"
+    id "idea"
+}
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    gatling("io.gatling:gatling-app:2.1.7")
+}
+
+idea {
+    module {
+        scopes.COMPILE.plus += [
+                project.configurations.gatling
+        ]
+    }
+
+}
