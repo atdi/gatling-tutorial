@@ -20,11 +20,14 @@ class UserServiceSimpleSimulation extends Simulation {
     .exec(http("Get user by email")
       .get("/users/search/findByEmail?email=${email}")
       .check(status.is(200))
-      .check(bodyString.saveAs("userData"))
+      .check(jsonPath("$").ofType[Map[String, Any]].find.saveAs("userDataMap"))
       .check(
         jsonPath("$.._links.self.href").find.exists.saveAs("nextUrl"))
     ).exec(http("Update password").put("${nextUrl}")
-    .body(StringBody("${userData}"))
+    .body(StringBody("""{"firstName": "${userDataMap.firstName}",
+              "lastName": "${userDataMap.lastName}",
+              "email": "${userDataMap.email}",
+              "password": "newpassword2"}"""))
     .asJSON.check(status.is(200)))
 
   setUp(
