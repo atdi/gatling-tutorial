@@ -4,7 +4,7 @@ group 'com.github.atdi'
 version '1.0-SNAPSHOT'
 
 task wrapper(type: Wrapper) {
-  gradleVersion = '2.12'
+  gradleVersion = '2.11'
   distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
 }
 
