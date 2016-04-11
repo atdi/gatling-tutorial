@@ -6,8 +6,6 @@ repositories {
     mavenCentral()
 }
 
-compileScala.classpath += project.configurations.gatling
-compileTestScala.classpath += project.configurations.gatling
 
 dependencies {
     gatling("io.gatling:gatling-app:2.1.7")
