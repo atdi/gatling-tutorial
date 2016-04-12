@@ -9,6 +9,7 @@ repositories {
 
 dependencies {
     gatling("io.gatling:gatling-app:2.1.7")
+    gatlingRuntime files("src/gatling/resources/conf")
 }
 
 idea {

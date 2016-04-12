@@ -31,7 +31,7 @@ class UserServiceSimpleSimulation extends Simulation {
     .asJSON.check(status.is(200)))
 
   setUp(
-    chainScenario.inject(constantUsersPerSec(10).during(10 seconds)).protocols(httpConf)
+    chainScenario.inject(constantUsersPerSec(10).during(600 seconds)).protocols(httpConf)
   ).assertions(global.responseTime.max.lessThan(5000))
 
 }
