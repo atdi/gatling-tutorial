@@ -6,13 +6,13 @@ import io.gatling.core.Predef._
 import scala.concurrent.duration._
 
 /**
-  * Created by aurelavramescu on 05/04/16.
-  */
+ * Created by aurelavramescu on 05/04/16.
+ */
 class UserServiceSimpleSimulation extends Simulation {
 
-  val feeder = csv("users.csv").random
+  val feeder = csv("data/users.csv").random
 
-  val httpConf = http.baseURL("http://localhost:50001")
+  val httpConf = http.baseUrl("http://localhost:50001")
     .header("Content-Type", "application/json")
 
   val chainScenario = scenario("Chain") // A scenario with a chain of requests and pauses
@@ -24,25 +24,17 @@ class UserServiceSimpleSimulation extends Simulation {
       .check(
         jsonPath("$.._links.self.href").find.exists.saveAs("nextUrl"))
     ).exec(http("Update password").put("${nextUrl}")
-    .body(StringBody("""{"firstName": "${userDataMap.firstName}",
+    .body(StringBody(
+      """{"firstName": "${userDataMap.firstName}",
               "lastName": "${userDataMap.lastName}",
               "email": "${userDataMap.email}",
-              "password": "newpassword2"}"""))
-    .asJSON.check(status.is(200)))
+              "password": "newpassword2"}""")).asJson.check(status.is(200)))
+
 
   setUp(
-    chainScenario.inject(constantUsersPerSec(10).during(600 seconds)).protocols(httpConf)
-  ).assertions(global.responseTime.max.lessThan(5000))
+    chainScenario.inject(constantUsersPerSec(10).during(600 second)).protocols(httpConf)
+  ).assertions(global.responseTime.max.lt(5000))
 
 }
 
-
-
-
-/*StringBody("""{"first_name": "${first_name}",
-              "last_name": "${last_name}",
-              "birth_date": "${birth_date}",
-              "email": "${email}",
-              "password": "${password}",
-              "phone": "${phone}"}""")*/
 

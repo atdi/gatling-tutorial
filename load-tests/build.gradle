@@ -1,22 +1,15 @@
 plugins {
-    id "com.github.lkishalmi.gatling" version "0.2.0"
-    id "idea"
+    id 'io.gatling.gradle' version "3.5.1"
 }
-repositories {
-    mavenCentral()
+
+
+gatling {
+    jvmArgs = ['-server', '-Xms512M', '-Xmx512M']
+    systemProperties = ['file.encoding': 'UTF-8']
 }
 
 
 dependencies {
-    gatling("io.gatling:gatling-app:2.1.7")
-    gatlingRuntime files("src/gatling/resources/conf")
-}
-
-idea {
-    module {
-        scopes.COMPILE.plus += [
-                project.configurations.gatling
-        ]
-    }
 
 }
+

@@ -12,18 +12,18 @@ gradlew.bat bootRun
 
 ###On linux/unix###
 
-./gradlew :load-test:gatling-com.github.atdi.load.UserServiceCreateSimulation
+./gradlew gatlingRun-com.github.atdi.load.UserServiceCreateSimulation
 
 ###On windows###
 
-gradlew.bat :load-test:gatling-com.github.atdi.load.UserServiceCreateSimulation
+gradlew.bat gatlingRun-com.github.atdi.load.UserServiceCreateSimulation
 
 ##Run tests##
 
 ###On linux/unix###
 
-./gradlew :load-test:gatling-com.github.atdi.load.UserServiceSimpleSimulation
+./gradlew gatlingRun-com.github.atdi.load.UserServiceSimpleSimulation
 
 On windows:
 
-gradlew.bat :load-test:gatling-com.github.atdi.load.UserServiceSimpleSimulation
+gradlew.bat gatlingRun-com.github.atdi.load.UserServiceSimpleSimulation

@@ -12,7 +12,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -32,16 +31,12 @@ public class User implements Serializable {
     private Long id;
 
     @Column(unique = true)
-    @NotNull
     private String email;
 
-    @NotNull
     private String firstName;
 
-    @NotNull
     private String lastName;
 
-    @NotNull
     private String password;
 
     private boolean active;
